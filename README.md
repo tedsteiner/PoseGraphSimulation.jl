@@ -1,7 +1,7 @@
 # PoseGraphSimulation.jl
 
 Pose-graph simulation in Julia for vehicles driving in street networks, utilizing the Julia OpenStreetMap.jl Package.
-PoseGraphSimulation.jl can create a pose-graph data file (similar to the Manhattan world SLAM dataset) to be solved using iSAM or another pose-graph solver, and also provides some functions for computing the error of the solution.
+PoseGraphSimulation.jl can create a pose-graph data file (similar to the Manhattan world SLAM dataset) to be solved using [iSAM](http://people.csail.mit.edu/kaess/isam/) or another pose-graph solver, and also provides some functions for computing the error of the solution.
 This enables Manhattan-world-like datasets to be generated for any route with OpenStreetMap coverage to be solved with iSAM's command line interface.
 
 
