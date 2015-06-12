@@ -1,0 +1,80 @@
+### Conventions for Pose Graph I/O Files ###
+### Ted Steiner ###
+### September 2014 ###
+
+Notes:
+* All angles are in radians
+* Comments in files may be prefaced with "#"
+
+#####
+Flags
+#####
+
+Flags can be set to indicate additional information in the files some examples are:
+    MAP_NAME (String): Map identifier
+    FASTEST (0 or 1): Routes computed using fastest (1) or shortest (0) paths
+    WAYPOINT_MIN_DIST (Real): Minimum distance for a path between consecutive waypoints
+
+Ideally these would be at the top of the file for convenience.
+
+Example:
+FLAG MAP_NAME central
+FLAG FASTEST 1
+FLAG WAYPOINT_MIN_DIST 300
+
+
+########
+2D Poses
+########
+
+This uses the iSAM format.
+
+Pose2d_Node ID (x, y theta)
+
+Example: 
+Pose2d_Node 6220 (-23.3457, 98.5915, -0.860019)
+
+
+#########################
+2D Pose-Pose Measurements
+#########################
+
+This uses the iSAM format.
+
+EDGE2 POSE_FROM POSE_TO x y theta Inf_xx Inf_xy Inf_xt Inf_yy Inf_yt Inf_tt
+
+Example:
+EDGE2 1 2 20.048215 0.068453 -0.003681 5.000000 0.0 0.0 5.000000 0.0 50.000000
+
+
+#############
+Location Sets
+#############
+
+The brackets are necessary to determine the start and end of the set.
+We call the loop-closure enabling locations "anchors."
+
+ANCHOR Num [a1 a2 a3 a4 ...]
+
+Example:
+ANCHOR 3 [1 2 3]
+
+
+#########
+Waypoints
+#########
+
+These are the waypoints used to compute a route with OpenStreetMap.
+They are represented the same as anchor sets, but starting with WAYPOINTS.
+
+WAYPOINTS Num [w1 w2 w3 w4 ...]
+
+Optionally add an AVOID line of nodes that could not be used as waypoints.
+
+WAYPOINTS_AVOID Num [n1 n2 n3 n4 ...]
+
+Example:
+WAYPOINTS 3 [1 2 3]
+WAYPOINTS_AVOID 2 [5 7]
+
+
